@@ -19,7 +19,7 @@ trait LastusTrait
     /**
      * Status mutator
      * @param string $value
-     * @return string
+     * @return void
      */
     public function setStatusAttribute($value)
     {
