@@ -42,8 +42,6 @@ class User extends Authenticatable
 
 And That's it ...
 
-
-
 ## Usage
 
 Saving a model:
@@ -55,8 +53,6 @@ $user = User::create([
     'password' => bcrypt('secret'),
     'status' => 'active', // This will be saved as `1` in the database
 ]);
-
-$user->save();
 ```
 
 Retrieving the status:
@@ -83,7 +79,7 @@ print_r(User::statuses());
 
 // or
 
-echo Lastus::statuses(App\User::class);
+print_r(Lastus::statuses(App\User::class));
 ```
 
 ## License
