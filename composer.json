@@ -1,0 +1,46 @@
+{
+    "name": "nzesalem/lastus",
+    "description": "A simple package to easily add and manage statuses in your laravel models",
+    "keywords": ["laravel", "lastus", "status", "models"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Salem Nzeukwu",
+            "email": "sjimfender@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": "5.5.x"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.4",
+        "orchestra/testbench": "^3.5",
+        "doctrine/dbal": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nzesalem\\Lastus\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nzesalem\\Lastus\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nzesalem\\Lastus\\ServiceProvider"
+            ],
+            "aliases": {
+                "Lastus": "Nzesalem\\Lastus\\Facade"
+            }
+        }
+    }
+}
