@@ -101,7 +101,7 @@ Retrieving a model status:
 echo $user->status; // This returns `active`
 ```
 
-You can get the status code whenever you need it. For example, status strings will not work if try to perform raw queries with them. So, in those cases you need the status codes instead:
+You can get the status code whenever you need it. For example, status strings will not work if you try to perform raw queries with them. So, in those cases you need the status codes instead:
 
 ```php
 $now = Carbon::now();
@@ -122,7 +122,7 @@ $user = User::whereRaw('status = ' . User::statusCode('suspended'))->first();
 $user->status == 'suspended' // true
 ```
 
-Getting all the defined statuses for a given model is also as easy. The example below gets all the defined statuses for the `User` model and displays them in an input select:
+Getting all the defined statuses for a given model is also as easy. The example below gets all the defined statuses for the `User` model and displays them in an select input:
 
 ```php
 <select id="status" class="form-control" name="status" required>
