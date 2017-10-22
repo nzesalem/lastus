@@ -13,6 +13,9 @@ trait LastusTrait
      */
     public function getStatusAttribute($value)
     {
+        if (! is_numeric($value)) {
+            throw new \InvalidArgumentException('Model status should be stored as an integer');
+        }
         return Lastus::statusName(static::class, $value);
     }
 
@@ -23,6 +26,9 @@ trait LastusTrait
      */
     public function setStatusAttribute($value)
     {
+        if (! is_string(($value))) {
+            throw new \InvalidArgumentException('Expecting a string for model status');
+        }
         $this->attributes['status'] = Lastus::statusCode(static::class, $value);
     }
     

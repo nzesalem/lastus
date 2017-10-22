@@ -40,16 +40,11 @@ class Lastus
         
         $key = self::unformatStatusName($statusName);
 
-        if (array_key_exists($key, $classStatuses)) {
-            return $classStatuses[$key];
-
-        } elseif (is_int($statusName) && in_array($statusName, $classStatuses)) {
-            // Passing a valid status code instead of a status name
-            // just returns back the status code
-            return $statusName;
+        if (! array_key_exists($key, $classStatuses)) {
+            throw new \InvalidArgumentException('The status name you provided is not valid');
         }
-        // At this point we can say the status code is invalid
-        throw new \InvalidArgumentException('The status name you provided is not valid');
+        
+        return $classStatuses[$key];
     }
 
     /**
