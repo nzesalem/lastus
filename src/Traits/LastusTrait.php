@@ -10,6 +10,8 @@ trait LastusTrait
      * Status accessor
      * @param  int $value
      * @return string
+     *
+     * @throws \InvalidArgumentException
      */
     public function getStatusAttribute($value)
     {
@@ -23,6 +25,8 @@ trait LastusTrait
      * Status mutator
      * @param string $value
      * @return void
+     *
+     * @throws \InvalidArgumentException
      */
     public function setStatusAttribute($value)
     {

@@ -52,4 +52,16 @@ class BaseTest extends TestCase
 
         $this->assertEquals('suspended', $user->status);
     }
+
+    public function testInvalidMutatorValue()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $user = User::create([
+            'name' => 'Firstname Lastname',
+            'email' => 'email@domain.com',
+            'password' => bcrypt('secret'),
+            // Setting status to a number directly is not allowed
+            'status' => 1,
+        ]);
+    }
 }
