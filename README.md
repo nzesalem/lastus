@@ -1,7 +1,7 @@
 # Lastus
 
 <p>
-<a href="https://travis-ci.org/nzesalem/lastus"><img src="https://travis-ci.org/nzesalem/lastus.svg" alt="Build Status"></a>
+<a href="https://travis-ci.org/nzesalem/lastus"><img src="https://travis-ci.org/Nzesalem/lastus.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/nzesalem/lastus"><img src="https://poser.pugx.org/nzesalem/lastus/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/nzesalem/lastus"><img src="https://poser.pugx.org/nzesalem/lastus/license.svg" alt="License"></a>
 </p>
