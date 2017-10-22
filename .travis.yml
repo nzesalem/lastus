@@ -1,0 +1,31 @@
+language: php
+
+sudo: false
+
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+
+env:
+  global:
+    - setup=basic
+
+before_install:
+  - travis_retry composer self-update
+  - composer config discard-changes true
+
+before_script:
+  - if [[ $setup = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction; fi
+  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable; fi
+  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable; fi
+
+matrix:
+  include:
+    - php: 7.0
+      env: setup=lowest
+    - php: 7.0
+      env: setup=stable
+
+script:
+  - vendor/bin/phpunit
