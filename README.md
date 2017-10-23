@@ -10,7 +10,7 @@ Easy status addition and management for your Eloquent models in Laravel.
 
 ## What is lastus/status?
 
-Consider you are building a forum app, you would typically have a `User` model/class. A `User` can be in different states or have different statuses at different points in time. For example when a user first registers for the forum you may want his/her status to be `unverified` indicating that the user have not verified his/her email. When the user verifies his/her email, he/she may become `active`. If the user violates one or more of the forum rules he/she may become `suspended`, and so on.
+Consider you are building a forum app, you would typically have a `User` model/class. A `User` can be in different states or have different statuses at different points in time. For example when a user first registers for the forum you may want his/her status to be `unverified` indicating that the user have not verified his/her email. When the user verifies his/her email, he/she may become `active`. If the user violates one or more of the forum rules, he/she may become `suspended`, and so on.
 
 **Lastus** package for Laravel 5 aims to handle all of this for you automatically, with minimal configuration.
 
