@@ -1,17 +1,20 @@
 # Lastus
 
+Easy status addition and management for your Eloquent models in Laravel.
+
 <p>
 <a href="https://travis-ci.org/nzesalem/lastus"><img src="https://travis-ci.org/nzesalem/lastus.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/nzesalem/lastus"><img src="https://poser.pugx.org/nzesalem/lastus/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/nzesalem/lastus"><img src="https://poser.pugx.org/nzesalem/lastus/license.svg" alt="License"></a>
 </p>
 
-Easy status addition and management for your Eloquent models in Laravel.
+## What is lastus/status?
 
-**Lastus** package for Laravel 5 aims to handle all of your Eloquent model statuses for you 
-automatically, with minimal configuration.
+Consider you are building a forum app, you would typically have a `User` model/class. A `User` can be in different states or have different statuses at different points in time. For example when a user first registers for the forum you may want his/her status to be `unverified` indicating that the user have not verified his/her email. When the user verifies his/her email, he/she may become `active`. If the user violates one or more of the forum rules he/she may become `suspended`, and so on.
 
-1. Install the package via Composer:
+**Lastus** package for Laravel 5 aims to handle all of this for you automatically, with minimal configuration.
+
+* Install the package via Composer:
 
     ```sh
     $ composer require nzesalem/lastus
@@ -21,9 +24,9 @@ automatically, with minimal configuration.
 
 ## Database migrations
 
-Your database tables should have a `status` field defined as the `tinyInteger` type. **Lastus** automatically adds this field to your `users` table (if it doesn't already exist) when you run the `php artisan migrate` command after adding **Lastus** to your project.
+Your database tables should have a `status` column defined as the `tinyInteger` type. **Lastus** automatically adds this column to your `users` table (if it doesn't already exist) when you run the `php artisan migrate` command after adding **Lastus** to your project.
 
-You should manually generate migrations for other of your tables as needed. Below is an example of how you would add the `status` field to a `posts` table.
+You should manually generate migrations for other of your tables as needed. Below is an example of how you would add the `status` column to a `posts` table.
 
 First run:
 
@@ -57,7 +60,11 @@ $ php artisan migrate
 
 ## Updating your Eloquent Models
 
-Your models should use the `LastusTrait` and define a `STATUSES` array constant:
+Your models should use the `LastusTrait` and define a `STATUSES` array constant.
+
+The keys of the `STATUSES` array should be in all caps and multiple words should be separated with underscore. Ideally it should follow the same naming rules and convention as [PHP constants](http://php.net/manual/en/language.constants.php).
+
+The values of the `STATUSES` array can be any number within the `TINYINT` range.
 
 ```php
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -67,7 +74,7 @@ class User extends Authenticatable
 {
     use LastusTrait;
 
-    // Define the statuses you want your model to have
+    // Key value pair of the statuses you want your model to have
     const STATUSES = [
         'UNVERIFIED' => 0,
         'ACTIVE' => 1,
@@ -80,7 +87,7 @@ class User extends Authenticatable
 
 ```
 
-So, That's it ...
+And that's it ...
 
 ## Usage
 
