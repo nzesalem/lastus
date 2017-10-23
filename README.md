@@ -80,6 +80,7 @@ class User extends Authenticatable
         'ACTIVE' => 1,
         'SUSPENDED' => 2,
         'BLOCKED' => 3,
+        'PENDING_APPROVAL' => 7,
     ];
 
     //...
@@ -91,24 +92,30 @@ And that's it ...
 
 ## Usage
 
-Saving a model:
+When saving models, just set its status property to one of the keys you have defined above, but in all lower case, multiple words should be separated by a hyphen. E.g `PENDING_APPROVAL` becomes `pending-approval`. This is the format you will use most of the time when working with statuses.
 
 ```php
 $user = User::create([
     'name' => 'Salem Nzeukwu',
     'email' => 'email@domain.com',
     'password' => bcrypt('secret'),
-    'status' => 'active', // This will be saved as `1` in the database
+    'status' => 'active', // This will be saved as '1' in the database
 ]);
 ```
 
 Retrieving a model status:
 
 ```php
-echo $user->status; // This returns `active`
+echo $user->status; // This prints 'active'
+
+// Sometime later
+$user->status = 'pending-approval';
+$user->save();
+
+echo $user->status; // This now prints 'pending-approval'
 ```
 
-You can get the status code whenever you need it. For example, status strings will not work if you try to perform raw queries with them. So, in those cases you need the status codes instead:
+You can get the status code whenever you need it. For example, status key strings will not work if you try to perform raw queries with them. So, in those cases you need the status codes instead:
 
 ```php
 $now = Carbon::now();
