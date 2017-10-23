@@ -8,6 +8,7 @@ trait LastusTrait
 {
     /**
      * Status accessor
+     *
      * @param  int $value
      * @return string
      *
@@ -23,6 +24,7 @@ trait LastusTrait
 
     /**
      * Status mutator
+     *
      * @param string $value
      * @return void
      *
@@ -38,6 +40,7 @@ trait LastusTrait
     
     /**
      * Get the status code of a given status in this model
+     *
      * @param  string $statusName
      * @return int
      */
@@ -48,10 +51,23 @@ trait LastusTrait
 
     /**
      * Get all the defined statuses in this model
+     *
      * @return array
      */
     public static function statuses()
     {
         return Lastus::statuses(static::class);
+    }
+
+    /**
+     * Checks if a model is currently in a given status.
+     *
+     * @param string $status
+     *
+     * @return bool
+     */
+    public function isCurrently($status)
+    {
+        return $this->status == $status;
     }
 }
