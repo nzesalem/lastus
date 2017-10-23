@@ -1,7 +1,7 @@
 # Lastus
 
 <p>
-<a href="https://travis-ci.org/nzesalem/lastus"><img src="https://travis-ci.org/Nzesalem/lastus.svg" alt="Build Status"></a>
+<a href="https://travis-ci.org/nzesalem/lastus"><img src="https://travis-ci.org/nzesalem/lastus.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/nzesalem/lastus"><img src="https://poser.pugx.org/nzesalem/lastus/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/nzesalem/lastus"><img src="https://poser.pugx.org/nzesalem/lastus/license.svg" alt="License"></a>
 </p>
@@ -128,7 +128,7 @@ Getting all the defined statuses for a given model is also as easy. The example 
 <select id="status" class="form-control" name="status" required>
     <option>Select a status</option>
     @foreach (App\User::statuses() as $status)
-    <option value="{{ $status }}">{{ucfirst($status) }}</option>
+    <option value="{{ $status }}">{{ ucfirst($status) }}</option>
     @endforeach
 </select>
 ```
@@ -141,4 +141,4 @@ print_r(Lastus::statuses(App\User::class));
 
 ## License
 
-[Lastus](https://github.com/Nzesalem/lastus) is released under the [MIT License](LICENSE).
+[Lastus](https://github.com/nzesalem/lastus) is released under the [MIT License](LICENSE).
