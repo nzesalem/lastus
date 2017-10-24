@@ -136,7 +136,7 @@ $user = User::whereRaw('status = ' . User::statusCode('suspended'))->first();
 $user->status == 'suspended' // true
 ```
 
-Getting all the defined statuses for a given model is also as easy. The example below gets all the defined statuses for the `User` model and displays them in an select input:
+Getting all the defined statuses for a given model is also easy as the snippet below. We get all the defined statuses for the `User` model and display them in a select element:
 
 ```php
 <select id="status" class="form-control" name="status" required>
