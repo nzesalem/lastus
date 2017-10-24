@@ -34,6 +34,7 @@ class LastusUserStatus
         if ($this->auth->guest() || !$request->user()->isCurrently($status)) {
             abort(403);
         }
+        
         return $next($request);
     }
 }
