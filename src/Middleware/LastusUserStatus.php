@@ -32,7 +32,7 @@ class LastusUserStatus
     public function handle($request, Closure $next, $status)
     {
         if ($this->auth->guest() || !$request->user()->isCurrently($status)) {
-            abort(403);
+            abort(403, 'Account is not in the right status to view this page');
         }
         
         return $next($request);
