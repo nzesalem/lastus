@@ -5,6 +5,25 @@ namespace Nzesalem\Lastus;
 class Lastus
 {
     /**
+     * Laravel application
+     *
+     * @var \Illuminate\Foundation\Application
+     */
+    public $app;
+    
+    /**
+     * Create a new confide instance.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return void
+     */
+    public function __construct($app)
+    {
+        $this->app = $app;
+    }
+
+    /**
      * Get the status name
      * @param  string    $class
      * @param  int $statusCode
@@ -79,6 +98,31 @@ class Lastus
             throw new \InvalidArgumentException('STATUSES constant array was not found in specified class');
         }
         return $class::STATUSES;
+    }
+
+    /**
+     * Checks if logged in user is currently in a given status.
+     *
+     * @param string $status
+     *
+     * @return bool
+     */
+    public function userIsCurrently($status)
+    {
+        if ($user = $this->user()) {
+            return $user->isCurrently($status);
+        }
+        return false;
+    }
+
+    /**
+     * Get the currently authenticated user or null.
+     *
+     * @return Illuminate\Auth\UserInterface|null
+     */
+    public function user()
+    {
+        return $this->app->auth->user();
     }
 
     /**
