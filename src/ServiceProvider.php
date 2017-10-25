@@ -2,6 +2,8 @@
 
 namespace Nzesalem\Lastus;
 
+use Nzesalem\Lastus\Middleware\LastusUserStatus;
+
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     /**
@@ -26,5 +28,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__.'/migrations');
+
+        $this->app['router']->aliasMiddleware('status', LastusUserStatus::class);
     }
 }
