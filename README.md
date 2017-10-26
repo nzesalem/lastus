@@ -153,6 +153,26 @@ Or you can use the `Lastus` facade:
 print_r(Lastus::statuses(App\User::class));
 ```
 
+### Blade templates
+
+You can use the `@status()` balde directive to control the visibility of elements based on the status of the currently logged in user:
+
+```php
+@status('active')
+    <p>This is only visible to users with an 'active' status.</p>
+@endstatus
+```
+
+### Middleware
+
+You can use a middleware to filter routes and route groups by status:
+
+```php
+Route::group(['prefix' => 'dashboard', 'middleware' => ['status:active']], function() {
+    Route::get('/', 'DashboardController@index');
+});
+```
+
 ## License
 
 [Lastus](https://github.com/nzesalem/lastus) is released under the [MIT License](LICENSE).
