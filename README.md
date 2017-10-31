@@ -155,7 +155,7 @@ print_r(Lastus::statuses(App\User::class));
 
 ### Blade templates
 
-You can use the `@status()` balde directive to control the visibility of elements based on the status of the currently logged in user:
+You can use the `@status()` blade directive to control the visibility of elements based on the status of the currently logged in user:
 
 ```php
 @status('active')
