@@ -128,10 +128,10 @@ DB::table('users')->insert([
     'created_at' => $now,
     'updated_at' => $now,
     // Get the status code.
-    'status' => User::statusCode('suspended'),
+    'status' => User::getStatusCode('suspended'),
 ]);
 // Raw select query
-$user = User::whereRaw('status = ' . User::statusCode('suspended'))->first();
+$user = User::whereRaw('status = ' . User::getStatusCode('suspended'))->first();
 
 $user->status == 'suspended' // true
 ```
