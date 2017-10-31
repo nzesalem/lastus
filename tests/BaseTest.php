@@ -45,10 +45,10 @@ class BaseTest extends TestCase
             // Note: Adding a literal string such as 'suspended' here will work
             // this is due to sqlite 'dynamic typing system'
             // But thats definitely not what we want.
-            'status' => User::statusCode('suspended'),
+            'status' => User::getStatusCode('suspended'),
         ]);
 
-        $user = User::whereRaw('status = ' . User::statusCode('suspended'))->first();
+        $user = User::whereRaw('status = ' . User::getStatusCode('suspended'))->first();
 
         $this->assertEquals('suspended', $user->status);
     }

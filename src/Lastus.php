@@ -53,7 +53,7 @@ class Lastus
      *
      * @throws \InvalidArgumentException
      */
-    public static function statusCode($class, $statusName)
+    public static function getStatusCode($class, $statusName)
     {
         $classStatuses = self::getClassStatuses($class);
         

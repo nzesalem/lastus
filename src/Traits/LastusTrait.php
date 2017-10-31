@@ -35,20 +35,30 @@ trait LastusTrait
         if (! is_string(($value))) {
             throw new \InvalidArgumentException('Expecting a string for model status');
         }
-        $this->attributes['status'] = Lastus::statusCode(static::class, $value);
+        $this->attributes['status'] = Lastus::getStatusCode(static::class, $value);
     }
     
+    /**
+     * Get the current status code of this model
+     *
+     * @return int
+     */
+    public function statusCode()
+    {
+        return Lastus::getStatusCode(static::class, $this->status);
+    }
+
     /**
      * Get the status code of a given status in this model
      *
      * @param  string $statusName
      * @return int
      */
-    public static function statusCode($statusName)
+    public static function getStatusCode($statusName)
     {
-        return Lastus::statusCode(static::class, $statusName);
+        return Lastus::getStatusCode(static::class, $statusName);
     }
-
+    
     /**
      * Get all the defined statuses in this model
      *
