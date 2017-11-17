@@ -25,6 +25,7 @@ class Lastus
 
     /**
      * Get the status name
+     *
      * @param  string    $class
      * @param  int $statusCode
      * @return string
@@ -47,6 +48,7 @@ class Lastus
 
     /**
      * Get the status code
+     *
      * @param  string    $class
      * @param  string $statusName
      * @return int
@@ -68,6 +70,7 @@ class Lastus
 
     /**
      * Get all defined statuses in a given model
+     *
      * @param  string    $class
      * @return array
      */
@@ -84,6 +87,7 @@ class Lastus
 
     /**
      * Get a class's statuses
+     *
      * @param  string    $class
      * @return const array
      *
@@ -94,7 +98,7 @@ class Lastus
         /**
          * @todo looks like some refactoring is needed here
          */
-        if (empty($class::STATUSES) || ! empty($class::STATUSES) && ! is_array($class::STATUSES)) {
+        if (empty($class::STATUSES) || (! empty($class::STATUSES) && ! is_array($class::STATUSES))) {
             throw new \InvalidArgumentException('STATUSES constant array was not found in specified class');
         }
         return $class::STATUSES;
