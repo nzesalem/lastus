@@ -20,7 +20,7 @@ Consider you are building a forum app, you would typically have a `User` model/c
     $ composer require nzesalem/lastus
     ```
 
-    The package will automatically register itself with Laravel 5.5.
+    The package will automatically register itself with Laravel 5.5 and later.
 
 ## Database migrations
 
