@@ -7,7 +7,7 @@ use Nzesalem\Lastus\Tests\TestCase;
 
 abstract class MiddlewareTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
         Mock::close();
