@@ -23,7 +23,7 @@ trait LastusTrait
     /**
      * Set status field name
      *
-     * @param [type] $fieldName
+     * @param string $fieldName
      * @return void
      */
     public function setStatusFieldName($fieldName) {
