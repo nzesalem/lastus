@@ -15,6 +15,7 @@ use Nzesalem\Lastus\Tests\Models\Email;
  */
 class BaseTest extends TestCase
 {
+    protected $statusFieldName = 'status';
     /**
      * Test basic Lastus functionality.
      */
@@ -36,7 +37,27 @@ class BaseTest extends TestCase
      */
     public function testMutatorAndAccessorWithCustomStatusField()
     {
-        $user = User::create([
+        $user = new User();
+        $user->setStatusFieldName('email');
+
+        $user->fill([
+            'name' => 'Salem Nzeukwu',
+            'email' => 'blocked',
+            'password' => bcrypt('secret'),
+            'custom_status' => 'blocked',
+        ]);
+        
+        $user->save();
+        
+        $this->assertEquals('blocked', $user->email);
+    }
+
+    /**
+     * Test basic Lastus functionality.
+     */
+    public function testUpdateWithCustomStatusField()
+    {
+        $user = new User([
             'name' => 'Salem Nzeukwu',
             'email' => 'blocked',
             'password' => bcrypt('secret'),
@@ -44,8 +65,12 @@ class BaseTest extends TestCase
         ]);
 
         $user->setStatusFieldName('email');
+        $user->save();
+
+        $user->email = 'active';
         
-        $this->assertEquals('blocked', $user->email);
+        $this->assertEquals('active', $user->email);
+        $this->assertEquals(1, $user->getAttributes()['email']);
     }
 
     public function testModelStatusCodeMethod()
