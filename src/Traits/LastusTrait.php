@@ -7,6 +7,11 @@ use Nzesalem\Lastus\Lastus;
 
 trait LastusTrait
 {
+    /**
+     * Return the status field name set in Model or return status (by default)
+     *
+     * @return string
+     */
     protected function getStatusFieldName() {
         try {
             return $this->statusFieldName;
@@ -15,6 +20,12 @@ trait LastusTrait
         }
     }
 
+    /**
+     * Set status field name
+     *
+     * @param [type] $fieldName
+     * @return void
+     */
     public function setStatusFieldName($fieldName) {
         $this->statusFieldName = $fieldName;
     }
