@@ -6,6 +6,30 @@ use Nzesalem\Lastus\Lastus;
 
 trait LastusTrait
 {
+    protected function getStatusFieldName() {
+        return isset($this->statusFieldName) ? $this->statusFieldName : 'status';
+    }
+
+    public function setStatusFieldName($fieldName) {
+        $this->userStatusFieldName = $fieldName;
+    }
+
+    /**
+     * Dynamically retrieve attributes on the model.
+     *
+     * @param  string  $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        if ($key === $this->getStatusFieldName()) {
+            $value = $this->getOriginal($key, 1);
+            return $this->getLastusStatus($value);
+        }
+
+        return parent::__get($key);
+    }
+
     /**
      * Status accessor
      *
@@ -14,11 +38,12 @@ trait LastusTrait
      *
      * @throws \InvalidArgumentException
      */
-    public function getStatusAttribute($value)
+    public function getLastusStatus($value)
     {
         if (! is_numeric($value)) {
             throw new \InvalidArgumentException('Model status should be stored as an integer');
         }
+
         return Lastus::statusName(static::class, $value);
     }
 
