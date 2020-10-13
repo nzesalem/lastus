@@ -2,72 +2,10 @@
 
 namespace Nzesalem\Lastus\Traits;
 
-use ErrorException;
 use Nzesalem\Lastus\Lastus;
 
 trait LastusTrait
 {
-    /**
-     * Return the status field name set in Model or return status (by default)
-     *
-     * @return string
-     */
-    protected function getStatusFieldName() {
-        try {
-            return $this->statusFieldName;
-        } catch(ErrorException $ex) {
-            return 'status';
-        }
-    }
-
-    /**
-     * Set status field name
-     *
-     * @param string $fieldName
-     * @return void
-     */
-    public function setStatusFieldName($fieldName) {
-        $this->statusFieldName = $fieldName;
-    }
-
-    /**
-     * Dynamically retrieve attributes on the model.
-     *
-     * @param  string  $key
-     * @return mixed
-     */
-    public function getAttribute($key, $defaultVal=null)
-    {
-        if ($key === $this->getStatusFieldName()) {
-            $value = parent::getAttribute($key, 1);
-            return $this->getLastusStatus($value);
-        }
-
-        return parent::getAttribute($key, $defaultVal);
-    }
-
-    /**
-     * Dynamically retrieve attributes on the model.
-     *
-     * @param  string  $key
-     * @return mixed
-     */
-    /**
-     * Dynamically set attributes on the model.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @return void
-     */
-    public function setAttribute($key, $value)
-    {
-        if ($key === $this->getStatusFieldName()) {            
-            $this->setLastusStatus($key, $value);
-        } else {
-            parent::setAttribute($key, $value);
-        }
-    }
-
     /**
      * Status accessor
      *
@@ -76,12 +14,11 @@ trait LastusTrait
      *
      * @throws \InvalidArgumentException
      */
-    public function getLastusStatus($value)
+    public function getStatusAttribute($value)
     {
         if (! is_numeric($value)) {
-            throw new \InvalidArgumentException(sprintf('Model %s should be stored as an integer, %s given', $this->getStatusFieldName(), $value));
+            throw new \InvalidArgumentException('Model status should be stored as an integer');
         }
-
         return Lastus::statusName(static::class, $value);
     }
 
@@ -93,13 +30,12 @@ trait LastusTrait
      *
      * @throws \InvalidArgumentException
      */
-    public function setLastusStatus($statusField, $value)
+    public function setStatusAttribute($value)
     {
         if (! is_string(($value))) {
-            throw new \InvalidArgumentException(sprintf('Expecting a string for model %s', $this->getStatusFieldName()));
+            throw new \InvalidArgumentException('Expecting a string for model status');
         }
-
-        $this->attributes[$statusField] = Lastus::getStatusCode(static::class, $value);
+        $this->attributes['status'] = Lastus::getStatusCode(static::class, $value);
     }
     
     /**
