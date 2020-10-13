@@ -136,13 +136,6 @@ $user = User::whereRaw('status = ' . User::getStatusCode('suspended'))->first();
 $user->status == 'suspended' // true
 ```
 
-To use a custom field in your model for status, add the `$statusFieldName` Property to the model. Example:
-```php
-class User {
-    protected $statusFieldName = 'sent_status';
-}
-```
-
 Getting all the defined statuses for a given model is also easy as the snippet below. We get all the defined statuses for the `User` model and display them in a select element:
 
 ```php

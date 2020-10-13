@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use Nzesalem\Lastus\Lastus;
 use Illuminate\Support\Facades\DB;
 use Nzesalem\Lastus\Tests\Models\User;
-use Nzesalem\Lastus\Tests\Models\Email;
 
 /**
  * Class BaseTest
@@ -15,7 +14,6 @@ use Nzesalem\Lastus\Tests\Models\Email;
  */
 class BaseTest extends TestCase
 {
-    protected $statusFieldName = 'status';
     /**
      * Test basic Lastus functionality.
      */
@@ -30,47 +28,6 @@ class BaseTest extends TestCase
         ]);
         
         $this->assertEquals('active', $user->status);
-    }
-
-    /**
-     * Test basic Lastus functionality.
-     */
-    public function testMutatorAndAccessorWithCustomStatusField()
-    {
-        $user = new User();
-        $user->setStatusFieldName('email');
-
-        $user->fill([
-            'name' => 'Salem Nzeukwu',
-            'email' => 'blocked',
-            'password' => bcrypt('secret'),
-            'custom_status' => 'blocked',
-        ]);
-        
-        $user->save();
-        
-        $this->assertEquals('blocked', $user->email);
-    }
-
-    /**
-     * Test basic Lastus functionality.
-     */
-    public function testUpdateWithCustomStatusField()
-    {
-        $user = new User([
-            'name' => 'Salem Nzeukwu',
-            'email' => 'blocked',
-            'password' => bcrypt('secret'),
-            'custom_status' => 'blocked',
-        ]);
-
-        $user->setStatusFieldName('email');
-        $user->save();
-
-        $user->email = 'active';
-        
-        $this->assertEquals('active', $user->email);
-        $this->assertEquals(1, $user->getAttributes()['email']);
     }
 
     public function testModelStatusCodeMethod()
