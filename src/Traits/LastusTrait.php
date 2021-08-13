@@ -16,6 +16,16 @@ trait LastusTrait
      */
     public function getStatusAttribute($value)
     {
+        if (is_null($value)) {
+            $statuses =  static::statuses();
+
+            if (count($statuses) < 1) {
+                throw new \InvalidArgumentException('STATUSES property is empty');
+            }
+
+            return $statuses[0];
+        }
+
         if (! is_numeric($value)) {
             throw new \InvalidArgumentException('Model status should be stored as an integer');
         }
