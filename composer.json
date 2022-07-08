@@ -1,50 +1,55 @@
 {
-    "name": "nzesalem/lastus",
-    "description": "A simple package to easily add and manage statuses in your laravel models",
-    "keywords": ["laravel", "lastus", "status", "models"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Salem Nzeukwu",
-            "email": "sjimfender@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=7.2.0",
-        "illuminate/support": "^8.0",
-        "doctrine/dbal": "^3.1"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.3",
-        "orchestra/testbench": "^6.2",
-        "mockery/mockery": "^1.3.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "Nzesalem\\Lastus\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests/Middleware/MiddlewareTest.php"
-        ],
-        "psr-4": {
-            "Nzesalem\\Lastus\\Tests\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "phpunit"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Nzesalem\\Lastus\\ServiceProvider"
-            ],
-            "aliases": {
-                "Lastus": "Nzesalem\\Lastus\\Facade"
-            }
-        }
+  "name": "nzesalem/lastus",
+  "description": "A simple package to easily add and manage statuses in your laravel models",
+  "keywords": [
+    "laravel",
+    "lastus",
+    "status",
+    "models"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Salem Nzeukwu",
+      "email": "sjimfender@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=7.2.0",
+    "illuminate/support": "^9.19",
+    "doctrine/dbal": "^3.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5",
+    "orchestra/testbench": "^7.6",
+    "mockery/mockery": "^1.4.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nzesalem\\Lastus\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/Middleware/MiddlewareTest.php"
+    ],
+    "psr-4": {
+      "Nzesalem\\Lastus\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Nzesalem\\Lastus\\ServiceProvider"
+      ],
+      "aliases": {
+        "Lastus": "Nzesalem\\Lastus\\Facade"
+      }
+    }
+  }
 }
